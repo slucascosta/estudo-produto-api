@@ -1,8 +1,9 @@
-const http = require("http");
+const express = require("express");
+const controller = require("./src/controller");
 
-const server = http.createServer((request, response) => {
-  response.write(request.url);
-  response.end();
-});
+const app = express();
+const port = 4000;
 
-server.listen(4000, () => console.log("Ouvindo na porta 4000"));
+app.use("/", controller);
+
+app.listen(port, () => console.log("Ouvindo na porta " + port))
